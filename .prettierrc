@@ -1,0 +1,7 @@
+{
+  "pages": [
+    "app/**/*.{js,ts,jsx,tsx}",
+    "!app/**/_*.{js,ts,jsx,tsx}",
+    "!app/**/*.test.{js,ts,jsx,tsx}"
+  ]
+}
