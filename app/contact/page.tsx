@@ -56,13 +56,13 @@ export default function ContactPage() {
     <div className="min-h-screen flex items-center justify-center px-4 py-20">
       <div className="max-w-4xl mx-auto w-full">
         <div className="text-center mb-16">
-          <SectionLabel>LET'S TALK</SectionLabel>
+          <SectionLabel>LET&apos;S TALK</SectionLabel>
           <AnimatedHeading as="h1" className="text-6xl md:text-8xl mb-6">
             GET IN TOUCH
           </AnimatedHeading>
           <p className="font-dm-sans text-lg text-[var(--muted)] max-w-2xl mx-auto">
             Have a project in mind? Want to collaborate? Or just want to say hello?
-            We'd love to hear from you.
+            We&apos;d love to hear from you.
           </p>
         </div>
 

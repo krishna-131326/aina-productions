@@ -1,83 +1,88 @@
-'use client';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import SplineHero from '../components/home/SplineHero';
+import MarqueeReel from '../components/home/MarqueeReel';
+import FeaturedFilms from '../components/home/FeaturedFilms';
+import StatsBanner from '../components/home/StatsBanner';
+import AboutStrip from '../components/home/AboutStrip';
+import LatestBlog from '../components/home/LatestBlog';
 
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import SectionLabel from '../components/ui/SectionLabel';
-import AnimatedHeading from '../components/ui/AnimatedHeading';
-import MemberCard from '../components/team/MemberCard';
-import { staggerContainer, scaleIn } from '../lib/variants';
+export const metadata: Metadata = {
+  title: 'Aina Productions - Short Films & Community Filmmaking',
+  description: 'Crafting stories that move.',
+};
 
-const teamMembers = [
-  {
-    id: '1',
-    name: 'Alex Rivera',
-    role: 'Director & Founder',
-    avatar: '',
-    bio: 'Passionate filmmaker with over 8 years of experience in short film production and community storytelling.',
-    instagramUrl: 'https://instagram.com',
-    order: 1,
-  },
-  {
-    id: '2',
-    name: 'Jordan Chen',
-    role: 'Cinematographer',
-    avatar: '',
-    bio: 'Visual storyteller specializing in atmospheric lighting and dynamic camera work for narrative films.',
-    instagramUrl: 'https://instagram.com',
-    order: 2,
-  },
-  {
-    id: '3',
-    name: 'Sam Taylor',
-    role: 'Editor',
-    avatar: '',
-    bio: 'Post-production wizard who brings raw footage to life through precise editing and sound design.',
-    instagramUrl: 'https://instagram.com',
-    order: 3,
-  },
-];
-
-export default function TeamPage() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
+export default function HomePage() {
   return (
-    <div>
-      {/* Split hero */}
-      <section className="py-24 px-4 pt-36">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
-          <div>
-            <SectionLabel>THE CREW</SectionLabel>
-            <AnimatedHeading as="h1" className="text-6xl md:text-8xl">
-              MEET OUR TEAM
-            </AnimatedHeading>
-          </div>
-          <p className="text-lg text-[var(--muted)] leading-relaxed border-l-2 border-[var(--accent)] pl-6">
-            Aina Productions is built on collaboration and creativity. Our diverse team brings together
-            filmmakers, artists, and storytellers united by a shared passion for cinematic storytelling.
-          </p>
-        </div>
-      </section>
-
-      {/* Team Grid */}
-      <section ref={ref} className="py-20 px-4 bg-[var(--surface)]">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-            variants={staggerContainer}
-            initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
+    <>
+      <SplineHero />
+      <MarqueeReel />
+      <FeaturedFilms />
+      <StatsBanner />
+      <AboutStrip />
+      <LatestBlog />
+      <section className="relative overflow-hidden px-4 py-32">
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(135deg, #0a0a0a 0%, #1a1200 50%, #0a0a0a 100%), repeating-linear-gradient(0deg, rgba(232, 197, 71, 0.04) 0px, rgba(232, 197, 71, 0.04) 1px, transparent 1px, transparent 48px), repeating-linear-gradient(90deg, rgba(232, 197, 71, 0.04) 0px, rgba(232, 197, 71, 0.04) 1px, transparent 1px, transparent 48px)',
+          }}
+        />
+        <div className="absolute inset-0 bg-black/20" />
+        <div className="relative mx-auto max-w-7xl text-center">
+          <div
+            className="pointer-events-none absolute left-0 right-[55%] top-[clamp(72px,12vw,130px)] hidden h-px origin-left lg:block"
+            style={{
+              backgroundColor: 'rgba(232, 197, 71, 0.3)',
+              animation: 'cta-line-left 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+            }}
+          />
+          <div
+            className="pointer-events-none absolute left-[55%] right-0 top-[clamp(72px,12vw,130px)] hidden h-px origin-right lg:block"
+            style={{
+              backgroundColor: 'rgba(232, 197, 71, 0.3)',
+              animation: 'cta-line-right 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+            }}
+          />
+          <p
+            className="mb-5 text-[11px] uppercase tracking-[0.28em] text-[var(--muted)]"
+            style={{ fontFamily: 'var(--font-space-mono), monospace' }}
           >
-            {[...teamMembers]
-              .sort((a, b) => a.order - b.order)
-              .map((member) => (
-                <motion.div key={member.id} variants={scaleIn}>
-                  <MemberCard member={member} />
-                </motion.div>
-              ))}
-          </motion.div>
+            Join The Collective
+          </p>
+          <h2
+            className="mx-auto max-w-5xl text-[clamp(56px,10vw,120px)] uppercase leading-[0.9] text-[var(--text)]"
+            style={{ fontFamily: 'var(--font-bebas-neue), cursive' }}
+          >
+            <span>Ready To Create</span>
+            <span className="text-[var(--accent)]">?</span>
+          </h2>
+          <p
+            className="mx-auto mt-6 max-w-xl text-base leading-8 text-[var(--muted)] md:text-lg"
+            style={{ fontFamily: 'var(--font-dm-sans), sans-serif' }}
+          >
+            Step into a filmmaking community built for collaboration, experimentation, and stories
+            that stay with people long after the credits roll.
+          </p>
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link
+              href="/join"
+              className="inline-flex items-center justify-center border-2 border-[var(--accent)] px-8 py-3 text-xs uppercase tracking-[0.18em] text-[var(--accent)] transition-all duration-300 ease-out hover:bg-[var(--accent)] hover:text-[var(--bg)]"
+              style={{ fontFamily: 'var(--font-space-mono), monospace' }}
+            >
+              Apply Now
+            </Link>
+            <Link
+              href="/films"
+              className="inline-flex items-center justify-center border border-[var(--border)] bg-transparent px-8 py-3 text-xs uppercase tracking-[0.18em] text-[var(--text)] transition-colors duration-300 ease-out hover:border-[var(--accent)] hover:text-[var(--accent)]"
+              style={{ fontFamily: 'var(--font-space-mono), monospace' }}
+            >
+              Watch Our Work
+            </Link>
+          </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }

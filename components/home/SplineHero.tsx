@@ -16,15 +16,21 @@ const Spline = dynamic(() => import('@splinetool/react-spline'), {
   ),
 });
 
+const sceneUrl = process.env.NEXT_PUBLIC_SPLINE_SCENE_URL ?? '';
+const isSceneConfigured = sceneUrl.length > 0 && !sceneUrl.includes('YOUR_SCENE_ID_HERE');
+
 export default function SplineHero() {
   return (
     <section className="relative w-screen h-screen overflow-hidden bg-[var(--bg)]">
 
-      {/* 🎬 REPLACE the scene URL below with your actual Spline export URL */}
-      <Spline
-        scene="https://prod.spline.design/YOUR_SCENE_ID_HERE/scene.splinecode"
-        className="absolute inset-0 w-full h-full"
-      />
+      {isSceneConfigured ? (
+        <Spline
+          scene={sceneUrl}
+          className="absolute inset-0 w-full h-full"
+        />
+      ) : (
+        <div className="absolute inset-0 bg-[var(--bg)]" />
+      )}
 
       {/* Bottom fade into next section */}
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[var(--bg)] to-transparent z-10 pointer-events-none" />

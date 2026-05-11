@@ -4,7 +4,7 @@ import './globals.css';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import PageTransition from '../components/ui/PageTransition';
-import { AnimatePresence } from 'framer-motion';
+import BootLoader from '@/components/ui/BootLoader';
 
 const bebasNeue = Bebas_Neue({
   subsets: ['latin'],
@@ -57,12 +57,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${bebasNeue.variable} ${dmSans.variable} ${spaceMono.variable}`}
     >
       <body style={{ fontFamily: 'var(--font-dm-sans), sans-serif' }}>
+        {/* BootLoader plays first on initial page load */}
+        <BootLoader />
+        
+        {/* Main navigation - appears after BootLoader */}
         <Navbar />
+        
+        {/* Main content with page transitions */}
         <main>
-          <AnimatePresence mode="wait">
-            <PageTransition>{children}</PageTransition>
-          </AnimatePresence>
+          <PageTransition>{children}</PageTransition>
         </main>
+        
+        {/* Footer */}
         <Footer />
       </body>
     </html>

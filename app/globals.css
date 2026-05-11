@@ -62,3 +62,27 @@ body::after {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-dim);
 }
+
+@keyframes cta-line-left {
+  from {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+
+  to {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+}
+
+@keyframes cta-line-right {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Instagram } from 'lucide-react';
+import Image from 'next/image';
 
 interface Member {
   id: string;
@@ -22,9 +23,11 @@ export default function MemberCard({ member }: { member: Member }) {
       {/* Avatar circle with initials fallback */}
       <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-[var(--surface)] border-2 border-[var(--border)] group-hover:border-[var(--accent)] transition-colors overflow-hidden flex items-center justify-center">
         {member.avatar ? (
-          <img
+          <Image
             src={member.avatar}
             alt={member.name}
+            width={96}
+            height={96}
             className="w-full h-full object-cover"
           />
         ) : (
