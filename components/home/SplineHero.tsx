@@ -29,7 +29,7 @@ export default function SplineHero() {
           className="absolute inset-0 w-full h-full"
         />
       ) : (
-        <div className="absolute inset-0 bg-[var(--bg)]" />
+        <div className="absolute inset-0 bg-[var(--bg)]" style={{ backgroundImage: 'url(/images/backgrounds/bg-2.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', opacity: 0.2 }} />
       )}
 
       {/* Bottom fade into next section */}

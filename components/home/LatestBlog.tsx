@@ -20,7 +20,7 @@ const latestPosts: BlogPost[] = [
   {
     id: '1',
     title: 'Behind the Scenes: Crafting Shadows of Tomorrow',
-    coverImage: 'https://placehold.co/1400x600/111111/e8c547?text=Behind+The+Scenes',
+    coverImage: '/images/films/film-1.jpg',
     excerpt:
       'Step inside the process behind our latest short, from location scouting and shot design to the final rhythm of the edit.',
     publishedAt: '2024-03-15T10:00:00Z',
@@ -29,7 +29,7 @@ const latestPosts: BlogPost[] = [
   {
     id: '2',
     title: 'The Art of Short Film Storytelling',
-    coverImage: 'https://placehold.co/800x500/111111/e8c547?text=Short+Film+Storytelling',
+    coverImage: '/images/films/film-2.jpg',
     excerpt:
       'What changes when every second matters, and how constraint sharpens emotion on screen.',
     publishedAt: '2024-03-08T14:30:00Z',
@@ -38,7 +38,7 @@ const latestPosts: BlogPost[] = [
   {
     id: '3',
     title: 'Building a Community-First Film Set',
-    coverImage: 'https://placehold.co/800x500/111111/e8c547?text=Community+Film+Set',
+    coverImage: '/images/films/film-3.webp',
     excerpt:
       'The systems, rituals, and small choices that make collaboration feel generous and focused.',
     publishedAt: '2024-02-25T12:00:00Z',
@@ -47,7 +47,7 @@ const latestPosts: BlogPost[] = [
   {
     id: '4',
     title: 'Color, Texture, and Mood in Micro-Budget Cinema',
-    coverImage: 'https://placehold.co/800x500/111111/e8c547?text=Color+Texture+Mood',
+    coverImage: '/images/films/film-1.jpg',
     excerpt:
       'How we use practical light, wardrobe, and production design to create a premium cinematic world.',
     publishedAt: '2024-02-11T09:30:00Z',

@@ -21,7 +21,7 @@ const featuredFilms: Film[] = [
   {
     id: '1',
     title: 'Shadows of Tomorrow',
-    thumbnail: 'https://placehold.co/640x360/111111/e8c547?text=Shadows+of+Tomorrow',
+    thumbnail: '/images/films/film-1.jpg',
     youtubeUrl: 'https://youtube.com',
     description: 'A dystopian short exploring identity, ambition, and memory in a city lit by screens.',
     releaseDate: '2024-01-15',
@@ -30,7 +30,7 @@ const featuredFilms: Film[] = [
   {
     id: '2',
     title: 'Echoes',
-    thumbnail: 'https://placehold.co/640x360/111111/e8c547?text=Echoes',
+    thumbnail: '/images/films/film-2.jpg',
     youtubeUrl: 'https://youtube.com',
     description: 'A restrained, intimate portrait of grief told through fragments of sound and stillness.',
     releaseDate: '2024-02-20',
@@ -39,7 +39,7 @@ const featuredFilms: Film[] = [
   {
     id: '3',
     title: 'The Last Frame',
-    thumbnail: 'https://placehold.co/640x360/111111/e8c547?text=The+Last+Frame',
+    thumbnail: '/images/films/film-3.webp',
     youtubeUrl: 'https://youtube.com',
     description: 'A suspense-driven story about a filmmaker who uncovers something dangerous in the cut.',
     releaseDate: '2024-03-10',
