@@ -155,7 +155,7 @@ export default function FeaturedFilms() {
           initial={{ opacity: 0, y: 36 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 36 }}
           transition={{ duration: 0.6, delay: 0.35, ease: easeOutExpo }}
-          className="grid gap-8 md:grid-cols-2 xl:grid-cols-3"
+          className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
           style={{ willChange: 'transform' }}
         >
           {featuredFilms.map((film, index) => (

@@ -13,7 +13,8 @@ interface FormData {
   message: string;
 }
 
-// Metadata removed - move to layout if needed
+const inputClass =
+  'w-full bg-[var(--bg)] border border-[var(--border)] px-4 py-3 text-[var(--text)] transition-colors focus:border-[var(--accent)] focus:outline-none focus:ring-1 focus:ring-[var(--accent)]';
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -29,23 +30,19 @@ export default function ContactPage() {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     setSubmitMessage('');
-
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-
       if (response.ok) {
-        setSubmitMessage('Thank you for your message! We\'ll get back to you soon.');
+        setSubmitMessage("Thank you for your message! We'll get back to you soon.");
         reset();
       } else {
         setSubmitMessage('Something went wrong. Please try again.');
       }
-    } catch (error) {
+    } catch {
       setSubmitMessage('Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
@@ -53,109 +50,153 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-20">
-      <div className="max-w-4xl mx-auto w-full">
-        <div className="text-center mb-16">
-          <SectionLabel>LET&apos;S TALK</SectionLabel>
-          <AnimatedHeading as="h1" className="text-6xl md:text-8xl mb-6">
+    <div className="min-h-screen px-4 py-32">
+      <div className="mx-auto max-w-4xl">
+
+        {/* Header */}
+        <div className="mb-16 text-center">
+          <SectionLabel>Let&apos;s Talk</SectionLabel>
+          <AnimatedHeading as="h1" className="mb-6 text-6xl md:text-8xl">
             GET IN TOUCH
           </AnimatedHeading>
-          <p className="font-dm-sans text-lg text-[var(--muted)] max-w-2xl mx-auto">
+          <p
+            className="mx-auto max-w-2xl text-lg text-[var(--muted)]"
+            style={{ fontFamily: 'var(--font-dm-sans), sans-serif' }}
+          >
             Have a project in mind? Want to collaborate? Or just want to say hello?
             We&apos;d love to hear from you.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Contact Info */}
-          <div className="space-y-8">
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
+
+          {/* Contact info */}
+          <div className="space-y-10">
             <div>
-              <h3 className="font-bebas-neue text-2xl text-[var(--text)] mb-4">REACH OUT</h3>
+              <h3
+                className="mb-5 text-2xl uppercase text-[var(--text)]"
+                style={{ fontFamily: 'var(--font-bebas-neue), cursive' }}
+              >
+                Reach Out
+              </h3>
               <div className="space-y-4">
-                <a
-                  href="https://instagram.com/aina_productions"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-3 text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
-                >
-                  <Instagram size={20} />
-                  <span className="font-space-mono text-xs uppercase tracking-widest">@aina_productions</span>
-                </a>
-                <a
-                  href="https://youtube.com/@aina_productions"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-3 text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
-                >
-                  <Youtube size={20} />
-                  <span className="font-space-mono text-xs uppercase tracking-widest">@aina_productions</span>
-                </a>
-                <a
-                  href="mailto:hello@aina-productions.com"
-                  className="flex items-center space-x-3 text-[var(--muted)] hover:text-[var(--accent)] transition-colors"
-                >
-                  <Mail size={20} />
-                  <span className="font-space-mono text-xs uppercase tracking-widest">hello@aina-productions.com</span>
-                </a>
+                {[
+                  {
+                    href: 'https://instagram.com/aina_productions',
+                    icon: Instagram,
+                    label: '@aina_productions',
+                    external: true,
+                  },
+                  {
+                    href: 'https://youtube.com/@aina_productions',
+                    icon: Youtube,
+                    label: '@aina_productions',
+                    external: true,
+                  },
+                  {
+                    href: 'mailto:hello@aina-productions.com',
+                    icon: Mail,
+                    label: 'hello@aina-productions.com',
+                    external: false,
+                  },
+                ].map(({ href, icon: Icon, label, external }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target={external ? '_blank' : undefined}
+                    rel={external ? 'noopener noreferrer' : undefined}
+                    className="flex items-center gap-3 text-[var(--muted)] transition-colors hover:text-[var(--accent)]"
+                  >
+                    <Icon size={18} />
+                    <span
+                      className="text-xs uppercase tracking-widest"
+                      style={{ fontFamily: 'var(--font-space-mono), monospace' }}
+                    >
+                      {label}
+                    </span>
+                  </a>
+                ))}
               </div>
             </div>
 
             <div>
-              <h3 className="font-bebas-neue text-2xl text-[var(--text)] mb-4">LOCATION</h3>
-              <p className="font-dm-sans text-sm text-[var(--muted)] leading-relaxed">
-                Based in the heart of the city, we work with filmmakers and creatives worldwide.
-                Remote collaboration welcome.
+              <h3
+                className="mb-4 text-2xl uppercase text-[var(--text)]"
+                style={{ fontFamily: 'var(--font-bebas-neue), cursive' }}
+              >
+                Location
+              </h3>
+              <p
+                className="text-sm leading-8 text-[var(--muted)]"
+                style={{ fontFamily: 'var(--font-dm-sans), sans-serif' }}
+              >
+                Based in Delhi, India. We work with filmmakers and creatives worldwide.
+                Remote collaboration always welcome.
               </p>
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-8">
+          {/* Form */}
+          <div className="border border-[var(--border)] bg-[var(--surface)] p-8">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block font-space-mono text-xs uppercase tracking-widest text-[var(--muted)] mb-2">
+                <label
+                  htmlFor="contact-name"
+                  className="mb-2 block text-[11px] uppercase tracking-widest text-[var(--muted)]"
+                  style={{ fontFamily: 'var(--font-space-mono), monospace' }}
+                >
                   Name *
                 </label>
                 <input
+                  id="contact-name"
                   {...register('name', { required: 'Name is required' })}
-                  type="text"
-                  id="name"
-                  className="w-full bg-[var(--bg)] border border-[var(--border)] rounded px-4 py-3 font-dm-sans text-[var(--text)] focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)]"
+                  className={inputClass}
                 />
-                {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>}
+                {errors.name && (
+                  <p className="mt-1 text-xs text-red-500">{errors.name.message}</p>
+                )}
               </div>
 
               <div>
-                <label htmlFor="email" className="block font-space-mono text-xs uppercase tracking-widest text-[var(--muted)] mb-2">
+                <label
+                  htmlFor="contact-email"
+                  className="mb-2 block text-[11px] uppercase tracking-widest text-[var(--muted)]"
+                  style={{ fontFamily: 'var(--font-space-mono), monospace' }}
+                >
                   Email *
                 </label>
                 <input
+                  id="contact-email"
+                  type="email"
                   {...register('email', {
                     required: 'Email is required',
-                    pattern: {
-                      value: /^\S+@\S+$/i,
-                      message: 'Invalid email address',
-                    },
+                    pattern: { value: /^\S+@\S+$/i, message: 'Invalid email address' },
                   })}
-                  type="email"
-                  id="email"
-                  className="w-full bg-[var(--bg)] border border-[var(--border)] rounded px-4 py-3 font-dm-sans text-[var(--text)] focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)]"
+                  className={inputClass}
                 />
-                {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
+                {errors.email && (
+                  <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>
+                )}
               </div>
 
               <div>
-                <label htmlFor="message" className="block font-space-mono text-xs uppercase tracking-widest text-[var(--muted)] mb-2">
+                <label
+                  htmlFor="contact-message"
+                  className="mb-2 block text-[11px] uppercase tracking-widest text-[var(--muted)]"
+                  style={{ fontFamily: 'var(--font-space-mono), monospace' }}
+                >
                   Message *
                 </label>
                 <textarea
-                  {...register('message', { required: 'Message is required' })}
-                  id="message"
+                  id="contact-message"
                   rows={6}
                   placeholder="Tell us about your project or idea..."
-                  className="w-full bg-[var(--bg)] border border-[var(--border)] rounded px-4 py-3 font-dm-sans text-[var(--text)] focus:border-[var(--accent)] focus:ring-1 focus:ring-[var(--accent)]"
+                  {...register('message', { required: 'Message is required' })}
+                  className={inputClass}
                 />
-                {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>}
+                {errors.message && (
+                  <p className="mt-1 text-xs text-red-500">{errors.message.message}</p>
+                )}
               </div>
 
               <div className="text-center">
@@ -163,7 +204,11 @@ export default function ContactPage() {
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </GoldButton>
                 {submitMessage && (
-                  <p className={`mt-4 text-sm ${submitMessage.includes('Thank you') ? 'text-green-500' : 'text-red-500'}`}>
+                  <p
+                    className={`mt-4 text-sm ${
+                      submitMessage.includes('Thank you') ? 'text-green-400' : 'text-red-400'
+                    }`}
+                  >
                     {submitMessage}
                   </p>
                 )}

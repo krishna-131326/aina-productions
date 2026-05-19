@@ -3,8 +3,8 @@ import { Bebas_Neue, DM_Sans, Space_Mono } from 'next/font/google';
 import './globals.css';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
-import PageTransition from '../components/ui/PageTransition';
-import BootLoader from '@/components/ui/BootLoader';
+import BootLoader from '../components/ui/BootLoader';
+import AnimateLayout from '../components/ui/AnimateLayout';
 
 const bebasNeue = Bebas_Neue({
   subsets: ['latin'],
@@ -28,7 +28,7 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Aina Productions - Short Films & Community Filmmaking',
+  title: 'Aina Productions — Short Films & Community Filmmaking',
   description:
     'Crafting stories that move. Short films, community filmmaking, and cinematic experiences by Aina Productions.',
   openGraph: {
@@ -57,18 +57,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${bebasNeue.variable} ${dmSans.variable} ${spaceMono.variable}`}
     >
       <body style={{ fontFamily: 'var(--font-dm-sans), sans-serif' }}>
-        {/* BootLoader plays first on initial page load */}
         <BootLoader />
-        
-        {/* Main navigation - appears after BootLoader */}
         <Navbar />
-        
-        {/* Main content with page transitions */}
         <main>
-          <PageTransition>{children}</PageTransition>
+          <AnimateLayout>{children}</AnimateLayout>
         </main>
-        
-        {/* Footer */}
         <Footer />
       </body>
     </html>

@@ -74,7 +74,7 @@ export default function StatsBanner() {
   const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section ref={ref} className="border-y border-[var(--border)] bg-[var(--surface)] py-16">
+    <section ref={ref} className="border-y border-[var(--border)] bg-[var(--surface)] py-4">
       <motion.div
         className="mx-auto max-w-7xl px-4"
         initial={{ opacity: 0, y: 40 }}
